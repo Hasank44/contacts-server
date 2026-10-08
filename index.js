@@ -6,7 +6,6 @@ import setRoute from "./routes/routes.js";
 import { securityMiddlewares } from "./middlewares/security.js";
 import { mongoInjectionBlock } from "./middlewares/mongoInjectionBlock.js";
 import { xssSanitizer } from "./middlewares/xssSanitizer.js";
-import setCron from "./cron/setCron.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -36,7 +35,6 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
     try {
         connectDB();
-        setCron();
         app.listen(port, "0.0.0.0", () => {
           console.log(`Server is running on port ${port}`);
         });
